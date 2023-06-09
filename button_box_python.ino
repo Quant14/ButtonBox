@@ -1,9 +1,3 @@
-//BUTTON BOX 
-//USE w ProMicro
-//Tested in WIN10 + Assetto Corsa
-//AMSTUDIO
-//20.8.17
-
 #include <Keypad.h>
 
 #define ENABLE_PULLUPS
