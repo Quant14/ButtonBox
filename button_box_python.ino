@@ -5,8 +5,6 @@
 //20.8.17
 
 #include <Keypad.h>
-//#include "C:\coding\TUES\10 Arduino\button_box\button_box\button_box.h"
-//#include <Joystick.h>
 
 #define ENABLE_PULLUPS
 #define NUMROTARIES 4
@@ -37,11 +35,11 @@ rotariesdef rotaries[NUMROTARIES] {
   {8,9,56,57,0}
 };
 
-//rotariesdef rotary = {8, 9, 50, 51, 0};
+rotariesdef rotary = {8, 9, 50, 51, 0};
 
 int AlastState[4];
 int AcurrState[4];
-//int counter;
+int counter;
 
 #define DIR_CCW 0x10
 #define DIR_CW 0x20
@@ -99,14 +97,9 @@ byte colPins[NUMCOLS] = {A0,13,12,11,10};
 
 Keypad buttbx = Keypad( makeKeymap(buttons), rowPins, colPins, NUMROWS, NUMCOLS); 
 
-/*Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, 
-  JOYSTICK_TYPE_JOYSTICK, 32, 0,
-  false, false, false, false, false, false,
-  false, false, false, false, false);*/
-
 void setup() {
-  //pinMode(rotary.pin1, INPUT);
-  //pinMode(rotary.pin2, INPUT);
+  pinMode(rotary.pin1, INPUT);
+  pinMode(rotary.pin2, INPUT);
 
   Serial.begin(9600);
 
@@ -143,15 +136,15 @@ void CheckAllButtons(void) {
      }
 }
 
-/*void rotary_init(){
+void rotary_init(){
   for(int i = 0; i < NUMROTARIES; i++){
     pinMode(rotaries[i].pin1, INPUT);
     pinMode(rotaries[i].pin2, INPUT);
     AlastState[i] = digitalRead(rotaries[i].pin1);
   }
-}*/
+}
 
-/*void CheckAllEncoders(void){
+void CheckAllEncoders(void){
   for(int i = 0; i < NUMROTARIES; i++){
     AcurrState[i] = digitalRead(rotaries[i].pin1);
     if (AcurrState != AlastState){
@@ -166,7 +159,7 @@ void CheckAllButtons(void) {
     //Serial.print(AcurrState);
     AlastState = AcurrState;
   }
-}*/
+}
 
 void rotary_init() {
   	for (int i=0;i<NUMROTARIES;i++) {
